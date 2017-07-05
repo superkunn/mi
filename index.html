@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>mi</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+
+</head>
+<body>
+    <div class="top">
+        <div class="con">
+            <!-- 列表 -->
+            <div class="nav">
+                <a href="#">小米商城</a><span class="shu">|</span>
+                <a href="#">MIUI</a><span class="shu">|</span>
+                <a href="#">米聊</a><span class="shu">|</span>
+                <a href="#">游戏</a><span class="shu">|</span>
+                <a href="#">多看阅读</a><span class="shu">|</span>
+                <a href="#">云服务</a><span class="shu">|</span>
+                <a href="#">金融</a><span class="shu">|</span>
+                <a href="#">小米商城移动版</a><span class="shu">|</span>
+                <a href="#">问题反馈</a><span class="shu">|</span>
+                <a href="#">Select Region</a>
+                
+            </div>
+
+            <!-- buy -->
+            <div class="buy">
+                <a href="#"><span class="glyphicon glyphicon-list-alt"></span>&nbsp&nbsp购物车</a>
+            </div>
+            <!-- 登陆 -->
+            <div class="denglu">
+                <a href="#">登陆</a><span class="shu">|</span>
+                <a href="#">注册</a><span class="shu">|</span>
+                <a href="#">消息通知&nbsp&nbsp&nbsp</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="top2">
+        <div class="con">
+            <!-- logo -->
+            <div class="logo">
+                <a href="#" ><img src="images/logo.png"></a>
+                <a href="#" ><img src="images/gif.gif"></a>
+            </div>
+            <!-- 列表 -->
+            <div class="navs">
+                <ul>
+                     <li><a href="#">小米手机</a></li>
+                     <li><a href="#">红米</a></li>
+                     <li><a href="#">平板</a></li>
+
+                </ul>
+             </div>
+
+             <!-- 搜索框 -->
+             <div class="search">
+                 <input type="text"  class="text" placeholder="小米6"><input type="submit" class="btn" value="  ">
+             </div>
+        </div>
+
+        
+    </div>
+
+    <div class="play">
+        <div class="pic">
+            <img src="images/1.jpg">
+            <img src="images/2.jpg">
+            <img src="images/3.jpg">
+            <img src="images/4.jpg">
+            <img src="images/5.jpg">
+        </div>
+        <!-- 小圆点 -->
+        <div class="list">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <!-- 箭头 -->
+        <div class="jiantou">
+            <img src="images/icon-left2.png" class="left">
+            <img src="images/icon-right2.png" class="right">
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript">
+        var time=0;
+        timeplay=null;
+
+        $(".play .list ul li").mouseover(function(){
+            clearInterval(timeplay);
+            index=$(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".play .pic img").eq(index).show().siblings(".play .pic img").hide();
+
+            
+
+            
+        }).mouseout(function(){
+            aa();
+        });
+
+       aa();
+            function aa() {
+
+               
+                timeplay=setInterval(function(){
+                    time++;
+
+                    if (time<5) {
+                        $(".play ul li").eq(time).addClass("active").siblings().removeClass("active");
+                        $(".play .pic img").eq(time).show().siblings(".play .pic img").hide();
+                    }
+                    else{
+                        time=-1;
+                    }
+                    
+                  
+                },1000);
+                // body...
+            }
+
+            // 左切换
+
+            $(".play .jiantou .left").click(function(){
+
+                time--;
+                if (time>=0) {
+                    $(".play ul li").eq(time).addClass("active").siblings().removeClass("active");
+                    $(".play .pic img").eq(time).show().siblings(".play .pic img").hide();
+                }else{
+                    time=5;
+                     $(".play ul li").eq(time=4).addClass("active").siblings().removeClass("active");
+                    $(".play .pic img").eq(time=4).show().siblings(".play .pic img").hide();
+                }
+
+            });
+
+            $(".play .jiantou .left").mouseover(function(){
+                clearInterval(timeplay);
+            }).mouseout(function(){
+                aa();
+            });
+
+            // 右切换
+
+            $(".play .jiantou .right").click(function(){
+
+                time++;
+                if (time<=4) {
+                    $(".play ul li").eq(time).addClass("active").siblings().removeClass("active");
+                    $(".play .pic img").eq(time).show().siblings(".play .pic img").hide();
+                }else{
+                    time=-1;
+                     $(".play ul li").eq(time=0).addClass("active").siblings().removeClass("active");
+                    $(".play .pic img").eq(time=0).show().siblings(".play .pic img").hide();
+                }
+
+            });
+
+            $(".play .jiantou .right").mouseover(function(){
+                clearInterval(timeplay);
+            }).mouseout(function(){
+                aa();
+            });
+
+
+    </script>
+
+</body>
+</html>
